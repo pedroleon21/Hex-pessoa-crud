@@ -3,6 +3,7 @@ package br.com.hexagonal.demo.adapter.pessoa;
 import br.com.hexagonal.demo.adapter.IRestfull;
 import br.com.hexagonal.demo.adapter.pessoa.dto.PessoaDTO;
 import br.com.hexagonal.demo.application.pessoa.port.PessoaServicePort;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,8 +36,15 @@ public class PessoaController implements IRestfull<PessoaDTO, Long> {
 
     @Override
     @PostMapping
+    public PessoaDTO create(@Valid @RequestBody PessoaDTO dto) {
+        return PESSOA_REST_MAPPER.toDto(
+                service.create(PESSOA_REST_MAPPER.toEntity(dto))
+        );
+    }
+
+    @Override
     @PutMapping
-    public PessoaDTO create(@RequestBody PessoaDTO dto) {
+    public PessoaDTO update(@Valid PessoaDTO dto) {
         return PESSOA_REST_MAPPER.toDto(
                 service.create(PESSOA_REST_MAPPER.toEntity(dto))
         );
