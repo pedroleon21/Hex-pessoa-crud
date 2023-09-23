@@ -44,7 +44,7 @@ public class PessoaController implements IRestfull<PessoaDTO, Long> {
 
     @Override
     @PutMapping
-    public PessoaDTO update(@Valid PessoaDTO dto) {
+    public PessoaDTO update(@Valid @RequestBody PessoaDTO dto) {
         return PESSOA_REST_MAPPER.toDto(
                 service.create(PESSOA_REST_MAPPER.toEntity(dto))
         );

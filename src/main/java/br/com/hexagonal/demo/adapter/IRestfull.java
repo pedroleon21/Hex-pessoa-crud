@@ -18,7 +18,7 @@ public interface IRestfull<D, I> {
     PessoaDTO create(PessoaDTO dto);
 
     @PutMapping
-    PessoaDTO update(PessoaDTO dto);
+    PessoaDTO update(@RequestBody PessoaDTO dto);
 
     @DeleteMapping("{id}")
     void delete(@PathVariable Long id);
