@@ -11,6 +11,13 @@ abstract class AEntity<T> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private T id;
 
+    public AEntity() {
+    }
+
+    public AEntity(T id) {
+        this.id = id;
+    }
+
     public T getId() {
         return id;
     }
