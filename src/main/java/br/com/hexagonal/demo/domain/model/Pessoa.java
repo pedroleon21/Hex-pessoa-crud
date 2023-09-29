@@ -14,6 +14,16 @@ public class Pessoa extends AEntity<Long> {
     @Column
     private LocalDate dtNacimento;
 
+    public Pessoa() {
+    }
+
+    public Pessoa(long id, String nome, String sobrenome, LocalDate dtNacimento) {
+        super(id);
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.dtNacimento = dtNacimento;
+    }
+
     public String getNome() {
         return nome;
     }

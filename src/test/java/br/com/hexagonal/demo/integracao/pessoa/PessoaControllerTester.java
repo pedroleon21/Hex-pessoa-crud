@@ -1,5 +1,6 @@
 package br.com.hexagonal.demo.integracao.pessoa;
 
+import br.com.hexagonal.demo.DemoApplication;
 import br.com.hexagonal.demo.adapter.pessoa.dto.PessoaDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
@@ -13,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDate;
 
-@SpringBootTest
+@SpringBootTest(classes = DemoApplication.class)
 @AutoConfigureMockMvc
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -37,7 +38,7 @@ public class PessoaControllerTester {
         mockMvc.perform(MockMvcRequestBuilders.post("/pessoa")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonRequest))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(pessoaDTO)));
     }
 
