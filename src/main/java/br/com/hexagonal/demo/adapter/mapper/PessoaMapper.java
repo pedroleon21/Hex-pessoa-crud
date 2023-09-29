@@ -6,7 +6,7 @@ import br.com.hexagonal.demo.domain.model.Pessoa;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PessoaMapper {
+public class PessoaMapper implements Mapper<Pessoa, PessoaDTO> {
 
     public static PessoaMapper PESSOA_REST_MAPPER = new PessoaMapper();
 
